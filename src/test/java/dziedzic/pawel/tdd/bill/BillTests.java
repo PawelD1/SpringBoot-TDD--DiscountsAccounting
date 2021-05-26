@@ -42,4 +42,15 @@ public class BillTests {
         Assertions.assertFalse(acceptDiscount);
         Assertions.assertEquals(2000, calculateDiscount);
     }
+
+    @Test
+    public void shouldNotGetDiscountDueToNotEnoughPrice() {
+        String discountCode = bill.provideDiscountCode("Sale-2021");
+        double totalAmount = bill.provideTotalPrice(1999);
+        boolean acceptDiscount = bill.checkDiscount(discountCode, totalAmount);
+        double calculateDiscount = bill.calculateDiscount(totalAmount, acceptDiscount);
+
+        Assertions.assertFalse(acceptDiscount);
+        Assertions.assertEquals(1999, calculateDiscount);
+    }
 }
