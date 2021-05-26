@@ -1,16 +1,22 @@
 package dziedzic.pawel.tdd.bill;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 public class BillTests {
 
+    private Bill bill;
+
+    @BeforeEach
+    public void createBill() {
+        this.bill = new Bill(0, "");
+    }
     @Test
     public void shouldCreateBill() {
-        Bill bill = new Bill();
         Assertions.assertEquals(bill.getStartAmount(), 0);
-        Assertions.assertEquals(bill.getDicountCode(), "");
+        Assertions.assertEquals(bill.getDiscountCode(), "");
     }
 }
