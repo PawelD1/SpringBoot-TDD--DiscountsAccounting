@@ -28,15 +28,11 @@ public class Bill {
     public boolean checkDiscount(String discountCode, double totalPrice) {
         String providedDiscountCode = this.provideDiscountCode(discountCode) ;
         double providedTotalPrice = this.provideTotalPrice(totalPrice);
-        if(providedDiscountCode.equals("Sale-2021") && providedTotalPrice>=2000)
-            return true;
-        else
-            return false;
+        return providedDiscountCode.equals("Sale-2021") && providedTotalPrice >= 2000;
     }
-    public double calculateDiscount(String discountCode, double totalPrice, boolean acceptDiscount) {
-        if(acceptDiscount && discountCode.equals("Sale-2021"))
+    public double calculateDiscount(double totalPrice, boolean acceptDiscount) {
+        if(acceptDiscount)
             return totalPrice* 0.9;
-        else
-            return totalPrice;
+        return totalPrice;
     }
 }

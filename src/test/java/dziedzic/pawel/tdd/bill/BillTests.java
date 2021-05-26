@@ -26,7 +26,7 @@ public class BillTests {
         String discountCode = bill.provideDiscountCode("Sale-2021");
         double totalAmount = bill.provideTotalPrice(2000);
         boolean acceptDiscount = bill.checkDiscount(discountCode, totalAmount);
-        double calculateDiscount = bill.calculateDiscount(discountCode, totalAmount, acceptDiscount);
+        double calculateDiscount = bill.calculateDiscount(totalAmount, acceptDiscount);
 
         Assertions.assertTrue(acceptDiscount);
         Assertions.assertEquals(1800, calculateDiscount);
